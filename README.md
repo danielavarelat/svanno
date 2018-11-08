@@ -5,7 +5,16 @@ Annotate SVs with breakpoint intersecting exons/introns/UTRs of OncoKB oncogenes
 `pip install -r requirements.txt`
 
 # usage
+### comandline environment
 `python svanno.py -i <vcf> -o <bedpe>`
+### python environment
+```
+import sys
+sys.path.append(<path to this repo>)
+import svanno
+import vcf2bedpe
+bedpe = svanno.annotate(vcf2bedpe.convert(<path to vcf file>)) 
+```
 
 # example output
 ```
