@@ -1,4 +1,3 @@
-#!/ifs/work/leukgen/bin/python/.virtualenvs/isabel3.6/bin/python
 import pysam
 import importlib
 import sys
