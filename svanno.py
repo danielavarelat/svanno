@@ -59,4 +59,4 @@ def annotate(bedpe):
 if __name__ == "__main__":
     args = parser.parse_args()
     bedpe = annotate(vcf2bedpe.convert(args.input))
-    bedpe.to_csv(args.output, index = False, header = True)
+    bedpe.to_csv(args.output, index = False, header = True, sep = '\t')
