@@ -24,10 +24,12 @@ def annotate(bedpe):
     
     bedpe = bedpe.copy()
     
-    tab_files = ['/ifs/work/leukgen/home/gaot/ref/oncokb_genes.bed.gz',
-                 '/ifs/work/leukgen/home/gaot/ref/oncokb_exons.bed.gz',
-                 '/ifs/work/leukgen/home/gaot/ref/oncokb_utrs.bed.gz',
-                 '/ifs/work/leukgen/home/gaot/ref/oncokb_introns.bed.gz']
+    script_path = os.path.dirname(os.path.realpath(__file__))
+    
+    tab_files = [os.path.join(script_path, 'oncokb_genes.bed.gz'),
+                 os.path.join(script_path, 'oncokb_exons.bed.gz'),
+                 os.path.join(script_path, 'oncokb_utrs.bed.gz'),
+                 os.path.join(script_path, 'oncokb_introns.bed.gz')]
 
     for feature, tab_file in zip(['gene', 'exon', 'utr', 'intron'], tab_files):
         tab = pysam.TabixFile(tab_file)
