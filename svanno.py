@@ -12,12 +12,27 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-i", "--input", type=str, required=True, help="input vcf")
 parser.add_argument("-o", "--output", required=True, type=str, help="output bedpe")
 
+# def query_tab(tab, chr, start, end, col = 3):
+#     hit = next(tab.fetch(chr, start, end), '')
+#     if hit:
+#         return hit.split('\t')[col]
+#     else:
+#         return ''
+
 def query_tab(tab, chr, start, end, col = 3):
-    hit = next(tab.fetch(chr, start, end), '')
-    if hit:
-        return hit.split('\t')[col]
+    hits = list(tab.fetch(chr, start, end))
+    if hits:
+        return sort_gene([hit.split('\t')[col] for hit in hits])
     else:
         return ''
+    
+def sort_gene(genes):
+    '''sort overlapping gene based on gene name'''
+    sorted_genes = sorted(genes, key = lambda name: ('AC' in name or 'AS' in name or 'AL' in name, '.' in name or '-' in name))
+    if len(sorted_genes) > 1:
+        return ','.join(sorted_genes)
+    else:
+        return sorted_genes[0]
     
 def annotate(bedpe):
     
@@ -25,7 +40,7 @@ def annotate(bedpe):
     
     script_path = os.path.dirname(os.path.realpath(__file__))
     
-    tab_files = [os.path.join(script_path, 'oncokb_genes.bed.gz'),
+    tab_files = [os.path.join(script_path, 'coding_genes.bed.gz'),
                  os.path.join(script_path, 'oncokb_exons.bed.gz'),
                  os.path.join(script_path, 'oncokb_utrs.bed.gz'),
                  os.path.join(script_path, 'oncokb_introns.bed.gz')]

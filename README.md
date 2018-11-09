@@ -1,7 +1,10 @@
 # svanno
 Annotate SVs with breakpoint intersecting exons/introns/UTRs of OncoKB oncogenes/tumor suppressors
 
-# usage
+# setup
+pip install -r requirements.txt
 
+# usage
+`python svanno.py -i <vcf> -o <bedpe>`
 
 
