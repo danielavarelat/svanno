@@ -3,7 +3,6 @@ import importlib
 import sys
 # sys.path.append('./')
 import vcf2bedpe
-importlib.reload(vcf2bedpe)
 import pandas as pd
 import os
 import argparse
