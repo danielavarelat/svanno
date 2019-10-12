@@ -12,8 +12,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-i", "--input", type=str, required=True, help="input vcf")
 parser.add_argument("-o", "--output", required=True, type=str, help="output bedpe")
 
-
-
 def query_tab(tab, chr, start, end, col = 3):
     hits = list(tab.fetch(chr, start, end))
     if hits:
