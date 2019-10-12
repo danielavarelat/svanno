@@ -41,8 +41,8 @@ def annotate(bedpe, hide = True):
     
     bedpe = bedpe.copy()
     
-    #script_path = os.path.dirname(os.path.realpath(__file__))
-    script_path = "/mnt/efs/svanno"
+    script_path = os.path.dirname(os.path.realpath(__file__))
+    #script_path = "/mnt/efs/myisabl/svanno"
 
     tab_files = [os.path.join(script_path, 'coding_genes.bed.gz'),
                  os.path.join(script_path, 'oncokb_exons.bed.gz'),
